@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admission - Palawan State University</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="Admission LOGO.jpg" />
+    <style>
+      ul,li {
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+
+      li {
+        margin-bottom: 5px;
+      }
+
+      ul {
+        margin-top: 20px;
+        margin-left: 25px;
+      }
+
+      .box-group {
+        width: 100%;
+      } 
+    </style>
+  </head>
+
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <img src="Admission LOGO.jpg" alt="Admission logo" />
+      <h1>WELCOME TO ADMISSION</h1>
+
+      <!-- Hamburger Menu Icon -->
+      <div
+        class="menu"
+        id="menu"
+        aria-label="Toggle navigation menu"
+        role="button"
+        tabindex="0"
+      ></div>
+    </header>
+
+    <!-- Dropdown Navigation Menu -->
+        <nav class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown-parent">
+          <a href="Campuses.html">Campuses</a>
+        </li>
+        <li class="dropdown-parent">
+          <a>Programs</a>
+          <ul class="submenu">
+            <li><a href="undergraduate.html">Undergraduate</a></li>
+            <li><a href="graduate.html">Graduate</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-parent">
+          <a href="admissionrequirements.html">Admission Requirements</a>
+        </li>
+        <li class="dropdown-parent">
+          <a href="processofapplication.html">Process of Application</a>
+        </li>
+        <li><a href="foreignStudent.html">Foreign Students</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <section class="box-group contacts-box">
+          <h3 style="text-align: left;">Palawan State University Campuses</h3>
+          <hr />
+          <ul>
+            <li>Araceli Campus</li>
+            <li>Balabac Campus</li>
+            <li>Bataraza Campus</li>
+            <li>Brook's Point Campus</li>
+            <li>Coron Campus</li>
+            <li>Cuyo Campus</li>
+            <li>Dumaran Campus</li>
+            <li>El Nido Campus</li>
+            <li>Linapacan Campus</li>
+            <li>Manalo Campus</li>
+            <li>Narra Campus</li>
+            <li>Puerto Princesa City Main Campus</li>
+            <li>Quezon Campus</li>
+            <li>Rizal Campus</li>
+            <li>Roxas Campus</li>
+            <li>San Rafael Campus</li>
+            <li>San Vicente Campus</li>
+            <li>Sofronio Española Campus</li>
+            <li>Taytay Campus</li>
+        </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Admission Office. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const menuIcon = document.getElementById("menu");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+
+      menuIcon.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("active");
+      });
+
+      window.addEventListener("click", (e) => {
+        if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.classList.remove("active");
+        }
+      });
+
+      // Robust Submenu Toggle for Mobile (Works repeatedly & across all pages)
+      document.addEventListener("click", function(e) {
+        const parent = e.target.closest(".dropdown-parent");
+        if (parent) {
+          const link = parent.querySelector(":scope > a");
+          const submenu = parent.querySelector(":scope > .submenu");
+          
+          // If clicking the Programs parent link/text
+          if (submenu && link && (e.target === link || link.contains(e.target))) {
+            e.preventDefault();
+            submenu.classList.toggle("active");
+          }
+        } else {
+          // Close submenus if clicking outside the dropdown parent
+          document.querySelectorAll(".submenu.active").forEach(sub => {
+            sub.classList.remove("active");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

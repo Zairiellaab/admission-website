@@ -1,0 +1,620 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: peachpuff;
+  display: flex;
+  padding: 10px 20px;
+  color: black;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+header img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+header h1 {
+  font-size: 1.3rem;
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Two-Column Main Layout Container */
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1280px;
+  margin: 20px auto;
+  padding: 0 15px;
+  justify-content: center;
+}
+
+/* Full Width Layout Modifier (for About, Requirements, Process) */
+.full-width-layout {
+  display: block;
+}
+
+.content-column {
+  width: 100%;
+}
+
+/* Left Column Styling */
+.left-column {
+  flex: 2;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Column Styling */
+.right-column {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-group {
+  background: #ffffff;
+  border: 1px solid #f0d5be;
+  margin-bottom: 20px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  .box-group {
+    padding: 20px;
+  }
+}
+
+.box-group h3 {
+  margin-bottom: 8px;
+  color: #333;
+  word-break: break-word;
+}
+
+.box-group p {
+  color: #555;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.box-group ul {
+  list-style-position: inside;
+  text-align: center;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.box-group li {
+  display: list-item;
+  word-break: break-word;
+}
+
+/* Quick Links Styles */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.links a {
+  background-color: peachpuff;
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  width: 90%;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+.links a:hover {
+  background-color: #f3bc96;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  display: none;
+  background-color: peachpuff;
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  width: 260px;
+  max-width: calc(100vw - 30px);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  text-align: left;
+  padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background-color: white;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+/* Position parent relative */
+.dropdown-menu .dropdown-parent {
+  position: relative;
+}
+
+/* Mobile Submenu (Expands downward inline) */
+.dropdown-menu .submenu {
+  display: none;
+  list-style: none;
+  padding: 5px 0 5px 15px;
+  margin: 5px 0 0 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.dropdown-menu .submenu.active {
+  display: block;
+}
+
+.dropdown-menu .submenu li {
+  padding: 8px 15px;
+  text-align: left;
+}
+
+.dropdown-menu .submenu li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.dropdown-menu .submenu li:hover {
+  background-color: white;
+}
+
+/* Desktop Submenu (Pops out to the side on hover) */
+@media (min-width: 992px) {
+  .dropdown-menu .submenu {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 200px;
+    background-color: peachpuff;
+    border-radius: 0 8px 8px 8px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    margin: 0;
+  }
+  
+  .dropdown-menu .dropdown-parent:hover .submenu {
+    display: block;
+  }
+}
+
+/* Hamburger Menu Icon */
+.menu {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  top: -8px;
+  left: 0;
+}
+
+.menu::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  top: 8px;
+  left: 0;
+}
+
+/* Contacts Box Overrides for Right Column */
+.contacts-box {
+  text-align: left;
+  font-size: 0.95rem;
+  width: 100%;
+  margin-left: 0;
+}
+
+.contacts-box h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.contacts-box p {
+  margin-bottom: 12px;
+}
+
+.map-container {
+  margin-top: 15px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 250px;
+  border: 0;
+  border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+  .map-container iframe {
+    height: 280px;
+  }
+}
+
+.right-column img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+/* Make sidebar images look interactive */
+.right-column .links img.zoomable-img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.right-column .links img.zoomable-img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive Announcement Posts Grid Layout */
+.posting {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+  .posting {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.image-preview {
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .image-preview {
+    flex: 0 0 200px;
+  }
+}
+
+.image-preview img {
+  width: 100%;
+  max-width: 200px;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.image-preview img:hover {
+  transform: scale(1.02);
+}
+
+.text-content {
+  flex: 1; 
+  min-width: 0;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Responsive Tables for Requirements & Processes */
+.requirements-table,
+.process-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.box-group table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.requirements-table th, .requirements-table td,
+.process-table th, .process-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .requirements-table th, .requirements-table td,
+  .process-table th, .process-table td {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+.requirements-table th,
+.process-table th {
+  background-color: peachpuff;
+  color: black;
+}
+
+.requirements-table ul,
+.process-table ul {
+  margin-left: 15px;
+  padding: 0;
+  text-align: left;
+}
+
+.requirements-table li,
+.process-table li {
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.workflow-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.6;
+  overflow-x: auto;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .workflow-box {
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Gallery Modal Styles */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  overflow: auto;
+  padding: 20px 10px;
+}
+
+.gallery-modal-content {
+  max-width: 650px;
+  width: 95%;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 500px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+/* The Single Image Zoom Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+  display: block;
+  max-width: 90vw;
+  max-height: 70vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+  border-radius: 4px;
+}
+
+.modal-content:active {
+  cursor: grabbing;
+}
+
+.modal-controls {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1010;
+  display: flex;
+  gap: 8px;
+}
+
+.modal-controls button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.modal-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+#modalCaption {
+  margin: auto;
+  display: block;
+  width: 90%;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #f1f1f1;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  background-color: #fff;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .right-column {
+    order: 1; 
+  }
+}
